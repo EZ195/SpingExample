@@ -21,4 +21,52 @@
 		WHERE
 			`id` = #{id}
 	</select>
+	
+	<insert id="addReviewByObject" parameterType="com.ezone.ex.lesson03.model.Review">
+		
+		INSERT INTO `new_review`
+			(
+				`storeId`
+				,`menu`
+				,`userName`
+				,`point`
+				,`review`
+				,`createdAt`
+				,`updatedAt`
+				
+			) 
+		VALUE (
+				#{storeId}				<!-- 컬럼명이 아니라 클래스 멤버 변수 -->
+				, #{menu}
+				, #{userName}
+				, #{point}
+				, #{review}
+				, now()
+				, now()
+		)
+		
+	</insert>
+	
+	<insert id="insertReviewByField" parameterType="map">
+		INSERT INTO `new_review`
+			(
+				`storeId`
+				,`menu`
+				,`userName`
+				,`point`
+				,`review`
+				,`createdAt`
+				,`updatedAt`				
+			) 
+		VALUE (
+				#{storeId}				<!-- DAO의 param -->
+				, #{menu}
+				, #{userName}
+				, #{point}
+				, #{review}
+				, now()
+				, now()
+		)
+	</insert>
+	
 </mapper>

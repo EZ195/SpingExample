@@ -29,9 +29,27 @@ public class ReviewController {
 		// }
 		
 		return reviewBO.getReview(id);
-		
-		
 	}
+	
+	@ResponseBody
+	@RequestMapping("/lesson03/ex02")
+	public String ex02() {
+		// 객체 형태로 파라미터 활용하기
+		//		Review review = new Review();
+		//	review.setStoreId(2);
+		//		review.setMenu("뿌링클");
+		// review.setUserName("이지원");
+		// review.setPoint(4.0);
+		// review.setReview("JMT");
+		
+		// int count = reviewBO.addReviewByObject(review);
+		
+		int count = reviewBO.addReviewByField(4, "콤비네이션", "이지원", 4.3, "맛있음");
+		
+		return "삽입결과 : " + count;
+	}
+	
+	
 	
 	
 }
