@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="com.ezone.ex.lesson04.dao.USerDAO">
+  
+  	<select id="selectLastUser" resultType="com.ezone.ex.lesson04.model.User">
+  		SELECT 
+  			`id`
+  			,`name`
+  			,`yyyymmdd`
+  			,`email`
+  			,`introduce`
+  			,`createdAt`
+  			,`updatedAt`
+  		FROM
+  			`new_user`
+  		ORDER BY `id` DESC
+  		LIMIT 1 <!-- 내림차순 정렬 후 가장 최근 데이터 불러오는 -->  		
+  	</select>
+  	
+  	
+  	<insert id="insertUser" parameterType="map">
+  		INSERT INTO `new_user`
+  		(
+  			`name`
+  			,`yyyymmdd`
+  			,`email`
+  			,`introduce`
+  			,`createdAt`
+  			,`updatedAt`
+  		) VALUE ( #{name}, #{yyyymmdd}, #{email}, #{introduce}, now(), now())
+  	</insert>
+  
+  </mapper>
