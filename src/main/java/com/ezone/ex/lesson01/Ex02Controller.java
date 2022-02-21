@@ -9,6 +9,7 @@ public class Ex02Controller {
 	@RequestMapping("/lesson/ex02/1")
 	public String view() {
 		
+		
 		return "lesson01/ex02/ex02";
 	}
 }
