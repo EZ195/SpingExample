@@ -21,7 +21,7 @@ public class ReviewController {
 			
 			// @RequestParam("id") Integer id) { // 기본 사용법 필수 파라미터
 			// @RequestParam(value="id" , required=true) Integer id) {		//필수 파라미터
-			// @RequestParam(value="id" , required=false) Integer id) { 	//비필수 파라미터
+			// @RequestParam(value="id" , required=false) Integer id) { 	//비필수 파라미터 - 있으면 적용 없으면 적용안함
 			@RequestParam(value="id" , defaultValue="1") int id) {
 		
 		// if(id == null) {
