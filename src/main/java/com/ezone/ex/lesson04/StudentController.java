@@ -24,7 +24,10 @@ public class StudentController {
 	}
 	
 	@GetMapping("/add_student")
-	public String addStudent(@ModelAttribute Student student, Model model) { //@ModelAttribute 객체로 파라미터를 대신 받겠다. 
+	public String addStudent(@ModelAttribute Student student, Model model) { 
+		//@ModelAttribute 객체로 파라미터를 대신 받겠다. 
+		//@ModelAttribute() SQL에 데이터 저장힐 데이터를 전달받기 때문에 컬럼명과 일치하는 클래스(DTO) 만들고 객체로
+		//@requestParam의 이름 짓는건 꼭 DTO의 변수명과 일치할 필요없음
 		
 		int count = studentBO.addStudent(student);
 		model.addAttribute("student" , student);
