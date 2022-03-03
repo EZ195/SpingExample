@@ -51,7 +51,7 @@
 				$.ajax({
 					type:"post",
 					url:"/lesson06/add_user", // action url 그대로 사용
-					// input에서 사용하는 name과 똑같음 파라미터 네임을 넣어줌  {"name":name} {"키": value(즉 변수)} --%>
+					// input에서 사용하는 name과 똑같음 파라미터 네임을 넣어줌  {"name":name} {"키(컨트롤러의 requestParam의 네임)": value(input에서 사용하는 name)}
 					data:{"name":name, "yyyymmdd":yyyymmdd, "introduce" : introduce, "email":email}, 
 					// 여기까지가 request를 위해 필요한 것들
 					
@@ -96,14 +96,13 @@
 				$.ajax({
 					type:"post",
 					url:"/lesson06/add_user", // action url 그대로 사용
-					// input에서 사용하는 name과 똑같음 파라미터 네임을 넣어줌  {"name":name} {"키": value(즉 변수)} --%>
+					// input에서 사용하는 name과 똑같음 파라미터 네임을 넣어줌  {"name":name} {"키": value()} --%>
 					data:{"name":name, "yyyymmdd":yyyymmdd, "introduce":introduce, "email":email}, 
 					// 여기까지가 request를 위해 필요한 것들
 					
 					success:function(data) {
 						alert(data);
-						location.href = "lesson04/ex01";
-					},
+						location.href = "/lesson04/ex01";							
 					error:function() {
 						alert("입력 에러");
 					}
