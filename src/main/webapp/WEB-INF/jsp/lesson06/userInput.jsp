@@ -8,9 +8,22 @@
 </head>
 <body>
 
+<style>
+	#duplicateText {
+		display:none;
+	}
+	#possibleText {
+		display:none;
+	}
+</style>
+
+
 	<h3>회원정보 추가</h3> 
 	<!--  <form action="/lesson06/add_user" method="post" id="userForm"> -->
-		<label>이름 : </label> <input type="text" name="name" id="nameInput"> <br><br>
+		<label>이름 : </label> <input type="text" name="name" id="nameInput"> <button type="button" id="duplicateBtn">중복확인</button> <br>
+		<div id="duplicateText"><small >중복되었습니다.</small></div><br>
+		<div id="possibleText"><small >사용가능합니다.</small></div><br>
+		
 		<label>생년월일 : </label>  <input type="text" name="yyyymmdd" id="yyyymmddInput"> <br><br>
 		<label>자기소개 : </label> <br><br>
 		<textarea rows="10" cols="50" name="introduce" id="introduceInput"></textarea> <br><br>
@@ -49,11 +62,7 @@
 				}
 				
 				$.ajax({
-					type:"post",
-					url:"/lesson06/add_user", // action url 그대로 사용
-					// input에서 사용하는 name과 똑같음 파라미터 네임을 넣어줌  {"name":name} {"키(컨트롤러의 requestParam의 네임)": value(input에서 사용하는 name)}
-					data:{"name":name, "yyyymmdd":yyyymmdd, "introduce" : introduce, "email":email}, 
-					// 여기까지가 request를 위해 필요한 것들
+					
 					
 					success:function(data) {
 						alert(data);
@@ -102,13 +111,45 @@
 					
 					success:function(data) {
 						alert(data);
-						location.href = "/lesson04/ex01";							
+						location.href = "/lesson04/ex01";
+					},
 					error:function() {
 						alert("입력 에러");
 					}
 				});
-			 
+			});
+			
+			
+			$("#duplicateBtn").on("click", function(){
+				let name = $("*nameInput").val();
 				
+				if(name == "") {
+					alert("이름을 입력하세요!!");
+					return;
+				}
+				
+				$ajax({
+					
+					type:"get",
+					url:"/lesson06/is_duplicate",
+					data:{"name":name},
+					success:function(data) {
+						//중복되었습니다. 사용가능합니다. 알림 띄우기
+						$("#duplicateText").hide();
+						$("#possibleText").hide();
+						
+						if(data.is_duplicate) {
+							$("#duplicateText").show();
+						}
+						else {
+							$("#possibleText").show();
+						}
+						
+					},
+					error:function() {
+						alert("입력 에러");
+					}
+				});
 			});
 		});	
 	</script>

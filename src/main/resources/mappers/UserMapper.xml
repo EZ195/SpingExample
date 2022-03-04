@@ -23,14 +23,34 @@
   	
   	<insert id="insertUser" parameterType="map">
   		INSERT INTO `new_user`
-  		(
-  			`name`
-  			,`yyyymmdd`
-  			,`email`
-  			,`introduce`
-  			,`createdAt`
-  			,`updatedAt`
-  		) VALUE ( #{name}, #{yyyymmdd}, #{email}, #{introduce}, now(), now())
+	  		(
+	  			`name`
+	  			,`yyyymmdd`
+	  			,`email`
+	  			,`introduce`
+	  			,`createdAt`
+	  			,`updatedAt`
+	  		) 
+	  VALUE 
+	  		( 
+	  			#{name}
+	  			,#{yyyymmdd}
+	  			,#{email}
+	  			,#{introduce}
+	  			,now()
+	  			,now()
+	  		)
+	  		
   	</insert>
+  	
+  	<select id="selectNameCount" parameterType="String" resultType="int">
+  		SELECT 
+  			count(*)
+  		FROM
+  			`new_user`
+  		WHERE
+  			`name` = #{name }
+  		
+  	</select>
   
   </mapper>

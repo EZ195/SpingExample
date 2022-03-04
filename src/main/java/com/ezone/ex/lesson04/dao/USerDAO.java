@@ -13,4 +13,6 @@ public interface USerDAO {
 						  @Param("yyyymmdd") String yyyymmdd,
 						  @Param("introduce") String introduce,
 						  @Param("email") String email);
+	
+	public int selectNameCount(@Param("name") String name);  // 이름이 일치하는 개수 알려주는 것 return 타입을 int로
 }
