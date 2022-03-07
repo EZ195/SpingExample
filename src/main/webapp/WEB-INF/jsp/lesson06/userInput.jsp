@@ -21,7 +21,7 @@
 	<h3>회원정보 추가</h3> 
 	<!--  <form action="/lesson06/add_user" method="post" id="userForm"> -->
 		<label>이름 : </label> <input type="text" name="name" id="nameInput"> <button type="button" id="duplicateBtn">중복확인</button> <br>
-		<div id="duplicateText"><small >중복되었습니다.</small></div><br>
+		<div id="duplicateText"><small class="primary">중복되었습니다.</small></div><br>
 		<div id="possibleText"><small >사용가능합니다.</small></div><br>
 		
 		<label>생년월일 : </label>  <input type="text" name="yyyymmdd" id="yyyymmddInput"> <br><br>
@@ -129,7 +129,6 @@
 				}
 				
 				$ajax({
-					
 					type:"get",
 					url:"/lesson06/is_duplicate",
 					data:{"name":name},
