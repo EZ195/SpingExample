@@ -23,7 +23,7 @@ public class ReviewBO {
 	}
 	
 	public int addReviewByField(int storeId, String menu, String usereName, double point, String review) {
-		return reviewDAO.insertReviewByField(storeId, menu, usereName, storeId, review);
+		return reviewDAO.insertReviewByField(storeId, menu, usereName, point, review);
 	}
 
 }
